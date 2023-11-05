@@ -2,6 +2,7 @@ import './globals.css'
 
 import { getServerSession } from 'next-auth';
 import SessionProvider from '../components/SessionProvider';
+import ThemeRegistry from './ThemeRegistry';
 
 export const metadata = {
   title: 'CSE DEPT',
@@ -13,7 +14,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <ThemeRegistry options={{ key: 'mui' }}>
+          <SessionProvider session={session}>{children}</SessionProvider>
+        </ThemeRegistry>
       </body>
     </html>
   )
