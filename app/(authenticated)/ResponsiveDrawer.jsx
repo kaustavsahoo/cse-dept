@@ -27,7 +27,6 @@ export default function ResponsiveDrawer({ children }) {
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
       >
         <Drawer
           variant="temporary"
@@ -41,7 +40,7 @@ export default function ResponsiveDrawer({ children }) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
-          <DrawerList />
+          <DrawerList setMobileOpen={setMobileOpen} />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -51,11 +50,15 @@ export default function ResponsiveDrawer({ children }) {
           }}
           open
         >
-          <DrawerList />
+          <DrawerList setMobileOpen={setMobileOpen} />
         </Drawer>
       </Box>
-      <AppBar
-          position="static"
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+      >
+        <AppBar
+          position="sticky"
           sx={{ display: { sm: 'none' } }}
         >
           <Toolbar>
@@ -71,12 +74,10 @@ export default function ResponsiveDrawer({ children }) {
             </IconButton>
           </Toolbar>
         </AppBar>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-
-        {children}
+        <Box
+          sx={{ p: 3 }}>
+          {children}
+        </Box>
       </Box>
     </Box>
   );

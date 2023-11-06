@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 
-import { Avatar, Typography, Box } from "@mui/material";
-
+import { Avatar, Box } from "@mui/material";
 
 
 export default function UserProfile() {
@@ -16,7 +15,7 @@ export default function UserProfile() {
                 bgcolor: "background.paper",
             }}
         >
-            <Avatar src={session.user.image} alt={name} sx={{ mr: 2 }} />
+            <Avatar src={session.user.image} sx={{ mr: 2 }} />
             <Box
                 sx={{
                     bgcolor: 'background.paper',
