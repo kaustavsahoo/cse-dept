@@ -10,21 +10,18 @@ const HomePage = (props) => {
     <div className={styles['container']}>
       <div className={styles['header']}>
         <header data-thq="thq-navbar" className={styles['navbar-interactive']}>
-          <span className={styles['logo']}>CSDEPT</span>
+          {/* <span className={styles['logo']}>MNIT Bridge</span> */}
+          <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/Mnit_logo.png" alt="" height="55px" width="65px"/>
           <div data-thq="thq-navbar-nav" className={styles['desktop-menu']}>
             <nav className={styles['links']}>
-
+               MNIT Bridge
             </nav>
             <div className={styles['buttons']}>
-              <button
-                className={` ${styles['login']} ${projectStyles['button']} `}
-              >
-                Login
-              </button>
+             
               <button
                 className={` ${styles['register']} ${projectStyles['button']} `}
               >
-                Register
+                Register / Login
               </button>
             </div>
           </div>
@@ -36,7 +33,7 @@ const HomePage = (props) => {
           <div data-thq="thq-mobile-menu" className={styles['mobile-menu']}>
             <div className={styles['nav']}>
               <div className={styles['top']}>
-                <span className={styles['logo1']}>CSDEPT</span>
+                <span className={styles['logo1']}>MNIT Bridge</span>
                 <div data-thq="thq-close-menu" className={styles['close-menu']}>
                   <svg viewBox="0 0 1024 1024" className={styles['icon02']}>
                     <path d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"></path>
@@ -92,10 +89,10 @@ const HomePage = (props) => {
             <h1
               className={` ${styles['hero-heading']} ${projectStyles['heading1']} `}
             >
-              MNIT Bridge
+              Student Interaction Hub
             </h1>
             <span className={styles['hero-sub-heading']}>
-              CS Hub: Your Home for Student Interaction
+              "Guiding Paths, Empowering Journeys"
             </span>
             <div className={styles['btn-group']}>
               <button
@@ -118,7 +115,7 @@ const HomePage = (props) => {
             <span
               className={` ${styles['text']} ${projectStyles['section-title']} `}
             >
-              <span>Details</span>
+              {/* <span>Details</span> */}
               <br></br>
             </span>
             <h2
@@ -148,7 +145,7 @@ const HomePage = (props) => {
               <span
                 className={` ${styles['text3']} ${projectStyles['section-title']} `}
               >
-                <span>features</span>
+                {/* <span>features</span> */}
                 <br></br>
               </span>
               <h2
@@ -163,20 +160,21 @@ const HomePage = (props) => {
             </div>
             <div className={styles['container4']}>
               <FeatureCard
-                Heading="Discussion Forums"
-                SubHeading="Engage in discussions with fellow computer science students to share ideas and ask questions."
+                Heading="User Authentication"
+                SubHeading="
+                Only current MNIT students and authorized faculty can access the platform using valid MNIT network credentials. "
               ></FeatureCard>
               <FeatureCard
-                Heading="Project Collaboration"
-                SubHeading="Collaborate with classmates on coding projects, allowing for efficient teamwork and knowledge sharing."
+                Heading="Course Material Upload"
+                SubHeading="Allows some authorized students and the class representatives of all 4 years to upload the coruse material"
               ></FeatureCard>
               <FeatureCard
-                Heading="Resource Library"
-                SubHeading="Access a comprehensive library of computer science resources, including textbooks, lecture notes, and coding examples."
+                Heading="Project Addition"
+                SubHeading="Allows students who have got placed or are/going to intern at some company to display their projects that were presented by them in the interviews"
               ></FeatureCard>
               <FeatureCard
-                Heading="Event Calendar"
-                SubHeading="Stay updated on upcoming computer science department events, such as workshops, seminars, and guest lectures."
+                Heading="User Experience"
+                SubHeading="The website is made responsive and made accessible across various devices"
               ></FeatureCard>
             </div>
           </div>
@@ -267,7 +265,7 @@ const HomePage = (props) => {
       <div className={styles['footer']}>
         <footer className={styles['footer1']}>
           <div className={styles['container6']}>
-            <span className={styles['logo2']}>CSDEPT</span>
+            <span className={styles['logo2']}>MNIT Bridge</span>
             
           </div>
           <div className={styles['separator']}></div>
