@@ -3,8 +3,8 @@
 // ProjectList.js
 import React, { useEffect, useState } from 'react';
 import { getAllProjects } from './projectsapi';
+import CreateProjectForm from './CreateProjectForm';
 import ProjectForm from './projectForm';
-
 function ProjectList() {
     const [projects, setProjects] = useState([
         {
@@ -38,7 +38,7 @@ function ProjectList() {
     return (
         <div>
             <h2>Projects</h2>
-            <ProjectForm />
+            <CreateProjectForm />
             <ul>
                 {projects.map((project) => (
                     <li key={project._id}>
