@@ -11,6 +11,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 
 import { Box } from '@mui/material';
 
@@ -47,18 +50,29 @@ export default function DrawerList({ setMobileOpen }) {
                             <ListItemText primary={"Directory"} />
                         </ListItemButton>
                     </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton href="/coursematerials" LinkComponent={Link} onClick={afterClick}>
+                            <ListItemIcon>
+                                <LibraryBooksIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Course Materials"} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton href="/projects" LinkComponent={Link} onClick={afterClick}>
+                            <ListItemIcon>
+                                <TipsAndUpdatesIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Projects"} />
+                        </ListItemButton>
+                    </ListItem>
+
                 </List>
             </Box>
             <List>
                 <Divider />
-                <ListItem disablePadding>
-                    <ListItemButton href="/settings" LinkComponent={Link} onClick={afterClick}>
-                        <ListItemIcon>
-                            <SettingsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Settings"} />
-                    </ListItemButton>
-                </ListItem>
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
