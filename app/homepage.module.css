@@ -1,3 +1,5 @@
+
+
 .container {
     width: 100%;
     display: flex;
@@ -13,7 +15,7 @@
     padding-top: var(--dl-space-space-oneandhalfunits);
     flex-direction: column;
     padding-bottom: var(--dl-space-space-oneandhalfunits);
-    background-color: var(--dl-color-primary1-blue80);
+    background-color: #393f45;
   }
   .navbar-interactive {
     width: 90%;
@@ -30,10 +32,13 @@
     background-color: var(--dl-color-gray-white);
   }
   .logo {
-    font-size: 2em;
-    font-family: "Lato";
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    text-transform: uppercase;
+    font-style: italic;
+    color: rgb(52, 71, 132);
+    cursor: pointer;
+    /* text-transform: uppercase; */
   }
   .desktop-menu {
     flex: 1;
@@ -46,6 +51,10 @@
     align-items: center;
     flex-direction: row;
     justify-content: center;
+    font-size: 39px;
+    /* font-style: italic; */
+    font-family :'Times New Roman', Times, serif;
+    color:rgb(153, 153, 106) ;
   }
   .nav1 {
     transition: 0.3s;
@@ -96,7 +105,7 @@
     padding-right: 1.5rem;
   }
   .register {
-    color: var(--dl-color-gray-white);
+    /* color: var(--dl-color-gray-white); */
     transition: 0.3s;
     font-weight: bold;
     border-color: var(--dl-color-primary1-blue100);
@@ -104,12 +113,19 @@
     border-radius: 45px;
     padding-right: 1.5rem;
     background-color: var(--dl-color-primary1-blue100);
+    font-style: italic;
+    color: rgb(52, 71, 132);
+    font-size: 15px;
+    cursor: pointer;
+    
   }
   .register:hover {
+    box-sizing: border-box;
     border-color: rgba(41, 20, 119, 0.9);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    background-color: rgba(41, 20, 119, 0.9);
+    /* padding-top: 1.5rem;
+    padding-bottom: 1.5rem; */
+    background-color: rgba(221, 212, 180, 0.9);
+    
   }
   .burger-menu {
     display: none;
@@ -187,6 +203,7 @@
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
   }
+ 
   .buttons1 {
     display: flex;
     margin-top: var(--dl-space-space-unit);
@@ -237,7 +254,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: var(--dl-color-primary1-blue80);
+    background-color: #393f45;
   }
   .hero1 {
     width: 100%;
@@ -260,17 +277,30 @@
     justify-content: flex-start;
   }
   .hero-heading {
-    color: var(--dl-color-gray-white);
-    max-width: 800px;
+    /* color: var(--dl-color-gray-white
+    ); */
+    color: white;
+    /* max-width: 800px; */
     text-align: center;
-    font-family: "Raleway";
-    line-height: 1.6;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: lighter;
+    /* line-height: 1.6; */
+    /* font-weight: 500; */
+    /* font-style: italic; */
+    color: white;
+    /* padding : 14px;
+     */
+     margin: -15px;
+
+     padding-bottom : 15px;
   }
   .hero-sub-heading {
     color: var(--dl-color-gray-white);
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
     line-height: 1.6;
+    font-style: italic;
+    color: rgb(178, 178, 135);
   }
   .btn-group {
     gap: var(--dl-space-space-oneandhalfunits);
@@ -291,11 +321,13 @@
     padding-right: 3rem;
     padding-bottom: 1.5rem;
     background-color: var(--dl-color-primary1-blue100);
+    font-size: 14px;
+    height: 38px;
   }
   .hero-button1:hover {
     color: var(--dl-color-gray-white);
     border-color: rgba(41, 20, 119, 0.9);
-    background-color: rgba(41, 20, 119, 0.9);
+    background-color: rgba(126, 102, 211, 0.9)
   }
   .hero-button2 {
     color: var(--dl-color-gray-white);
@@ -307,9 +339,12 @@
     padding-right: var(--dl-space-space-twounits);
     padding-bottom: var(--dl-space-space-unit);
     background-color: transparent;
+    height: 37px;
+    font-size: 15px;
   }
   .hero-button2:hover {
     border-color: var(--dl-color-gray-white);
+    background-color: rgb(213, 213, 181);
   }
   .details {
     flex: 0 0 auto;
@@ -364,6 +399,8 @@
     margin-left: var(--dl-space-space-fourunits);
     border-radius: var(--dl-radius-radius-round);
   }
+
+  
   .features {
     flex: 0 0 auto;
     width: 100%;
@@ -409,6 +446,7 @@
     font-family: "Raleway";
     line-height: 1.6;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
+    margin-top: -54px;
   }
   .features-sub-heading {
     color: var(--dl-color-gray-800);
@@ -867,5 +905,9 @@
       text-align: center;
       margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
+
+    
   }
+
+ 
   
