@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
 export interface User extends mongoose.Document {
-  full_name: string;
+  name: string;
   email: string;
-  picture_url: string;
+  image: string;
 }
 
 const UserSchema = new mongoose.Schema<User>({
-  full_name: {
+  name: {
     type: String,
     required: [true, 'Please provide a full name for the user.'],
     maxlength: [60, 'Full name cannot be more than 60 characters'],
@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema<User>({
     unique: true, // Ensure email addresses are unique
     maxlength: [100, 'Email address cannot be more than 100 characters'],
   },
-  picture_url: {
+  image: {
     type: String,
     required: true,
   },

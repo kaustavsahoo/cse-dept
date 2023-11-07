@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,6 +9,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
 import DrawerList from './DrawerList';
+import { createUserIfNotExists } from "./usersapi";
+
 
 const drawerWidth = 240;
 
@@ -18,6 +20,10 @@ export default function ResponsiveDrawer({ children }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  useEffect(() => {
+    createUserIfNotExists()
+  }, []);
 
 
   return (
