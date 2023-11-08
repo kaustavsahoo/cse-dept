@@ -12,7 +12,9 @@ async function getUserId() {
     const { email } = session.user;
     const user = await User.findOne({ email });
 
-    return user && user._id;
+    if (user)
+        return user._id;
+    return null;
 }
 
 async function getAllUsers() {

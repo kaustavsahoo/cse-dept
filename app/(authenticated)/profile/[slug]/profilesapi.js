@@ -7,10 +7,10 @@ import { getServerSession } from "next-auth";
 import { convertObjectIdsToStrings } from "../../../../lib/dbHelpers";
 import { ObjectId } from "mongodb";
 
-async function getProfile(email) {
+async function getProfile(id) {
   await dbConnect();
 
-  const user = await User.find({ email });
+  const user = await User.findById(id);
 
   if (user) {
     return convertObjectIdsToStrings(user);

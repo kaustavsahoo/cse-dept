@@ -47,11 +47,13 @@ export default function ProjectDialog({ modalOpen, setModalOpen, appliedUsers })
                 <CloseIcon />
             </IconButton>
             <DialogContent dividers>
-                <Typography gutterBottom>
-                    {appliedUsers.map((user, i) => (
-                        <UserCard user={user} key={i}/>
-                    ))}
-                </Typography>
+                {appliedUsers.length == 0 ? (
+                    <Typography gutterBottom>
+                        No applicants yet!
+                    </Typography>
+                ) : appliedUsers.map((user, i) => (
+                    <UserCard user={user} key={i} />
+                ))}
             </DialogContent>
         </BootstrapDialog>
     );

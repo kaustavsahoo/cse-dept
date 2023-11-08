@@ -32,7 +32,6 @@ export default function DrawerList({ setMobileOpen }) {
         <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
             <Box>
                 <UserProfile />
-                <Divider />
                 <List>
                     <ListItem disablePadding>
                         <ListItemButton href="/dashboard" LinkComponent={Link} onClick={afterClick}>

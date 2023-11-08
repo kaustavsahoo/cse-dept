@@ -34,7 +34,7 @@ const ProjectCard = ({ project, userId }) => {
 
   const handleApply = async () => {
     console.log('apply to project');
-    await applyToProject(project._id);
+    applyToProject(project._id).then(() => router.refresh());
   }
 
   const handleView = () => {
@@ -86,7 +86,7 @@ const ProjectCard = ({ project, userId }) => {
               </>
             ) : (
               <Button size="small" variant="outlined" onClick={handleApply} disabled={
-                project.userids.includes(userId)
+                project.userids && project.userids.includes(userId)
               }>Apply</Button>
             )
           }

@@ -6,10 +6,17 @@ import {
   Avatar,
   Box,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const UserCard = ({ user }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/profile/${user._id}`);
+  }
+
   return (
-    <CardActionArea sx={{mb: 1}}>
+    <CardActionArea sx={{mb: 1}} onClick={handleClick}>
       <Paper elevation={2} style={{ display: "flex", alignItems: "center", padding: "8px" }}>
         <Avatar alt={user.name} src={user.image} />
         <Box style={{ marginLeft: "16px" }}>
