@@ -23,7 +23,9 @@ export default function ResponsiveDrawer({ children }) {
     setMobileOpen(!mobileOpen);
   };
 
-
+  useEffect(() => {
+    createUserIfNotExists();
+  }, []);
 
 
   return (

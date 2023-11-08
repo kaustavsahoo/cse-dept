@@ -15,7 +15,7 @@ async function getAllProjects() {
     return projects.map((project) => convertObjectIdsToStrings(project));
 }
 
-async function createProject(title, description, selectedTags) {
+async function createProject(title, description, selectedTags, numPeople) {
     await dbConnect(); // Make sure you establish a database connection
 
     const session = await getServerSession();
@@ -28,6 +28,7 @@ async function createProject(title, description, selectedTags) {
             title,
             description,
             tags: selectedTags,
+            numPeople,
             creator: user._id
         });
 
@@ -41,5 +42,53 @@ async function createProject(title, description, selectedTags) {
     }
 }
 
+async function applyToProject(projectId) {
+    await dbConnect(); // Make sure you establish a database connection
 
-export { getAllProjects, createProject };
+    const session = await getServerSession();
+    const { email } = session.user;
+    const user = await User.findOne({ email });
+
+    const project = await Project.findById(projectId);
+
+    if (!user || !project) {
+        throw new Error('User or project not found');
+    }
+
+    if (!project.userids.includes(user._id)) {
+        project.userids.push(user._id);
+        await project.save();
+    }
+}
+
+async function getUserId() {
+    await dbConnect(); // Make sure you establish a database connection
+
+    const session = await getServerSession();
+    const { email } = session.user;
+    const user = await User.findOne({ email });
+
+    return user && user._id;
+}
+
+async function deleteProject(projectId) {
+    await dbConnect(); // Make sure you establish a database connection
+
+    const session = await getServerSession();
+    const { email } = session.user;
+    const user = await User.findOne({ email });
+
+    const project = await Project.findById(projectId);
+
+    if (!user || !project) {
+        throw new Error('User or project notfound');
+    }
+
+    if (user._id.toString() != project.creator._id.toString()) {
+        throw new Error('User is not the creator of the project');
+    }
+
+    await Project.findByIdAndDelete(projectId);
+}
+
+export { getAllProjects, createProject, getUserId, applyToProject, deleteProject };

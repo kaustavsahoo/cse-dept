@@ -13,6 +13,7 @@ import {
   FormControl,
   Checkbox,
   ListItemText,
+  Snackbar,
 } from '@mui/material';
 import { createProject } from '../projectsapi';
 
@@ -20,25 +21,38 @@ const CreateProjectForm = () => {
   const [projectName, setProjectName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
-  const availableTags = [
-    'Frontend',
-    'Backend',
-    'Design',
-  ]; // Replace with your list of tags
+  const [numPeople, setNumPeople] = useState(1); // Initialize the number of people required to 1
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const availableTags = ['Frontend', 'Backend', 'Design', 'React']; // Replace with your list of tags
 
   const handleChangeTags = (event) => {
     setSelectedTags(event.target.value);
   };
 
+  const handleNumPeopleChange = (event) => {
+    setNumPeople(event.target.value);
+  };
+
+  const handleSnackbarOpen = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createProject(projectName, description, selectedTags).then((project) => {
-      console.log('Created project', project);
-    }).catch(err => {
-      console.error('Failed to create project', err);
-    });
-  }
+    createProject(projectName, description, selectedTags, numPeople)
+      .then((project) => {
+        console.log('Created project', project);
+        handleSnackbarOpen(); // Open the snack bar on success
+      })
+      .catch((err) => {
+        console.error('Failed to create project', err);
+      });
+  };
 
   return (
     <Container maxWidth="sm">
@@ -66,7 +80,7 @@ const CreateProjectForm = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
           <FormControl fullWidth margin="normal">
-            <InputLabel id="tag-select-label">Select Tags</InputLabel>
+            <InputLabel id="tag-select-label" sx={{backgroundColor: "white"}}>Select Tags</InputLabel>
             <Select
               labelId="tag-select-label"
               id="tag-select"
@@ -83,6 +97,21 @@ const CreateProjectForm = () => {
               ))}
             </Select>
           </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel id="num-people-label" sx={{backgroundColor: "white"}}>Number of People</InputLabel>
+            <Select
+              labelId="num-people-label"
+              id="num-people"
+              value={numPeople}
+              onChange={handleNumPeopleChange}
+            >
+              {Array.from({ length: 10 }, (_, i) => (
+                <MenuItem key={i + 1} value={i + 1}>
+                  {i + 1}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <Button
             type="submit"
             variant="contained"
@@ -94,6 +123,13 @@ const CreateProjectForm = () => {
           </Button>
         </form>
       </Paper>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={snackbarOpen}
+        autoHideDuration={6000} // You can adjust the duration as needed
+        onClose={handleSnackbarClose}
+        message="Project created successfully!"
+      />
     </Container>
   );
 };
