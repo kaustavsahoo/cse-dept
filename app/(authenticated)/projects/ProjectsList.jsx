@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
-import ProjectCard from './projectCard';
+import ProjectCard from './ProjectCard';
 import Grid from '@mui/material/Grid';
 
 export default function ProjectsList({ projects }) {
