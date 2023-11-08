@@ -1,7 +1,13 @@
-export default function UserList() {
+"use client"
+
+import UserCard from "../../../components/UserCard";
+
+export default function UserList({ users }) {
     return (
         <div>
-            <h1>UserList</h1>
+            {users.map((user, i) => (
+                <UserCard user={user} key={i}/>
+            ))}
         </div>
     )
 }

@@ -1,9 +1,27 @@
 'use server';
 
 import dbConnect from '../../lib/dbConnect';
+import { convertObjectIdsToStrings } from '../../lib/dbHelpers';
 import User from '../../models/User'
 import { getServerSession } from "next-auth"
 
+async function getUserId() {
+    await dbConnect(); // Make sure you establish a database connection
+
+    const session = await getServerSession();
+    const { email } = session.user;
+    const user = await User.findOne({ email });
+
+    return user && user._id;
+}
+
+async function getAllUsers() {
+    await dbConnect();
+
+    const users = await User.find({}).lean();
+
+    return users.map(user => convertObjectIdsToStrings(user));
+}
 
 async function createUserIfNotExists() {
     const session = await getServerSession();
@@ -31,4 +49,4 @@ async function createUserIfNotExists() {
     }
 }
 
-export { createUserIfNotExists };
+export { createUserIfNotExists, getUserId, getAllUsers };

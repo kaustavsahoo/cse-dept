@@ -61,15 +61,7 @@ async function applyToProject(projectId) {
     }
 }
 
-async function getUserId() {
-    await dbConnect(); // Make sure you establish a database connection
 
-    const session = await getServerSession();
-    const { email } = session.user;
-    const user = await User.findOne({ email });
-
-    return user && user._id;
-}
 
 async function deleteProject(projectId) {
     await dbConnect(); // Make sure you establish a database connection
@@ -91,4 +83,33 @@ async function deleteProject(projectId) {
     await Project.findByIdAndDelete(projectId);
 }
 
-export { getAllProjects, createProject, getUserId, applyToProject, deleteProject };
+async function getAppliedUsers(projectid) {
+    await dbConnect(); // Make sure you establish a database connection
+  
+    try {
+      // Find the project by its ID
+      const project = await Project.findById(projectid).populate('userids');
+  
+      if (!project) {
+        throw new Error('Project not found');
+      }
+  
+      // Extract user information from the populated userids field
+      const users = project.userids.map(user => {
+        return {
+          _id: user._id.toString(),
+          name: user.name,
+          email: user.email,
+          image: user.image,
+        };
+      });
+  
+      return users;
+    } catch (error) {
+      console.error('Error fetching users for project:', error);
+      throw error;
+    }
+  }
+  
+
+export { getAllProjects, createProject, applyToProject, deleteProject, getAppliedUsers };
