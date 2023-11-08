@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 import AppBar from '@mui/material/AppBar';
@@ -21,9 +23,7 @@ export default function ResponsiveDrawer({ children }) {
     setMobileOpen(!mobileOpen);
   };
 
-  useEffect(() => {
-    createUserIfNotExists()
-  }, []);
+
 
 
   return (

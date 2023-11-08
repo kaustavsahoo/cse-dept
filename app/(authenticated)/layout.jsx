@@ -1,11 +1,9 @@
-"use client";
-
 import { redirect } from 'next/navigation'
-import { useSession } from "next-auth/react";
 import ResponsiveDrawer from './ResponsiveDrawer';
+import { getServerSession } from 'next-auth';
 
-export default function AuthenticatedLayout({ children }) {
-    const { data: session } = useSession();
+export default async function AuthenticatedLayout({ children }) {
+    const session = await getServerSession();
 
     if (!session || !session.user) {
         return redirect('/');

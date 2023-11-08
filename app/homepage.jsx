@@ -5,20 +5,28 @@ import GalleryCard3 from './GalleryCard'
 import projectStyles from './style.module.css'
 import styles from './homepage.module.css'
 
+import { signIn } from "next-auth/react";
+
 const HomePage = (props) => {
+
+  const handleAuth = () => {
+    signIn()
+  }
+
   return (
     <div className={styles['container']}>
       <div className={styles['header']}>
         <header data-thq="thq-navbar" className={styles['navbar-interactive']}>
           {/* <span className={styles['logo']}>MNIT Bridge</span> */}
-          <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/Mnit_logo.png" alt="" height="55px" width="65px"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/Mnit_logo.png" alt="" height="55px" width="65px" />
           <div data-thq="thq-navbar-nav" className={styles['desktop-menu']}>
             <nav className={styles['links']}>
-               MNIT Bridge
+              MNIT Bridge
             </nav>
             <div className={styles['buttons']}>
-             
+
               <button
+                onClick={handleAuth}
                 className={` ${styles['register']} ${projectStyles['button']} `}
               >
                 Register / Login
@@ -92,7 +100,7 @@ const HomePage = (props) => {
               Student Interaction Hub
             </h1>
             <span className={styles['hero-sub-heading']}>
-              "Guiding Paths, Empowering Journeys"
+            &quot;Guiding Paths, Empowering Journeys&quot;
             </span>
             <div className={styles['btn-group']}>
               <button
@@ -266,7 +274,7 @@ const HomePage = (props) => {
         <footer className={styles['footer1']}>
           <div className={styles['container6']}>
             <span className={styles['logo2']}>MNIT Bridge</span>
-            
+
           </div>
           <div className={styles['separator']}></div>
           <div className={styles['container7']}>
