@@ -3,7 +3,7 @@ import React from 'react'
 export default function page() {
   return (
     <div>
-      course materials
+      <h1>Course Materials</h1>
     </div>
   )
 }

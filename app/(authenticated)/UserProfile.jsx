@@ -9,7 +9,7 @@ export default function UserProfile() {
   const router = useRouter();
 
   const handleClick = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     router.push(`/profile`);
   }
 

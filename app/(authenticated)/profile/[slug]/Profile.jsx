@@ -21,39 +21,15 @@ import {
   Share
 } from '@mui/icons-material';
 
-export default function ProfilePage({ profile }) {
+import BioView from './BioView';
+
+export default function ProfilePage({ profile, canEdit }) {
   return (
     <Box sx={{ bgcolor: '#eee', height: '100%' }}>
       <Container sx={{ py: 5 }}>
         <Grid container spacing={4}>
           <Grid item sm={12} lg={4}>
-            <Card sx={{ mb: 4 }}>
-              <CardHeader
-                avatar={
-                  <Avatar
-                    src={profile.image}
-                    alt="Profile Picture"
-                    sx={{ width: 64, height: 64 }}
-                  />
-                }
-                title={profile.name}
-                subheader={profile.bio || 'This user has not provided a bio.'}
-              />
-              <CardMedia
-                component="img"
-                height="300"
-                image={profile.image}
-                alt="Profile Picture"
-              />
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <Favorite />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <Share />
-                </IconButton>
-              </CardActions>
-            </Card>
+            <BioView profile={profile} canEdit={canEdit} />
           </Grid>
           <Grid item lg={8}>
             <Card sx={{ mb: 4 }}>

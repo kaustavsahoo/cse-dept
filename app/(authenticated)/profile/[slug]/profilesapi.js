@@ -19,4 +19,15 @@ async function getProfile(id) {
   }
 }
 
-export { getProfile };
+async function updateBio(newBio) {
+  await dbConnect();
+
+  const session = await getServerSession();
+  const { email } = session.user;
+  const user = await User.findOne({ email });
+
+  user.bio = newBio;
+  await user.save();
+}
+
+export { getProfile, updateBio };

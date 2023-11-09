@@ -5,6 +5,7 @@ export interface User extends mongoose.Document {
   name: string;
   email: string;
   image: string;
+  bio: string; // New field for bio
 }
 
 const UserSchema = new mongoose.Schema<User>({
@@ -23,6 +24,10 @@ const UserSchema = new mongoose.Schema<User>({
   image: {
     type: String,
     required: true,
+  },
+  bio: {
+    type: String,
+    default: "Student in MNIT", // Set the default value to an empty string
   },
 });
 
