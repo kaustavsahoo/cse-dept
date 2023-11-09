@@ -1,7 +1,31 @@
 import React from "react";
+import { useSpring, animated } from "react-spring";
 import bg from "./back.jpeg";
+import logo from "./logo.png";
 import Image from "next/image";
+
 export default function HomePage() {
+  // Define a spring animation for the entire content
+  const contentAnimation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 500, // Add a delay for the animation
+  });
+
+  // Define a spring animation for the "COMMUNISYNC" h1 element to come in from the left
+  const headingAnimation = useSpring({
+    from: { transform: "translateX(-100%)" },
+    to: { transform: "translateX(0)" },
+    delay: 1000, // Delay the heading animation after the content animation
+  });
+
+  // Define animations for text content
+  const textAnimation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 1500, // Delay the text animation after the content animation
+  });
+
   const navbarStyle = {
     backgroundColor: "rgba(0, 0, 0, 0.4)",
     position: "fixed",
@@ -12,7 +36,7 @@ export default function HomePage() {
     color: "white",
     zIndex: 100,
     display: "flex",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     alignItems: "center",
   };
 
@@ -20,12 +44,12 @@ export default function HomePage() {
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     color: "white",
     fontFamily: "Poiret One",
-    font: "30px",
+    fontSize: "30px",
     padding: "10px 20px",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
-    marginRight: "30px",
+    marginLeft: "420%",
   };
 
   return (
@@ -38,46 +62,52 @@ export default function HomePage() {
         backgroundColor: "rgba(0, 0, 0, 0.7)",
       }}
     >
-      <nav style={navbarStyle}>
-        <h1 style={{ fontFamily: "Poiret One", marginLeft: "30px" }}>
+      <animated.nav style={{ ...navbarStyle, ...contentAnimation }}>
+        <img style={{ width: "5%", marginLeft: "1%" }} src={logo.src}></img>
+        <h1 style={{ fontFamily: "Poiret One", marginLeft: "1%" }}>
           COMMUNISYNC
         </h1>
         <div>
           <button style={buttonStyle}>Login/Register</button>
         </div>
-      </nav>
-      <h1
-        style={{
-          position: "relative",
-          top: "35vh",
-          left: "3%",
-          fontFamily: "Poiret One",
-          fontSize: "80px",
-          color: "white",
-        }}
-      >
-        COMMUNISYNC
-      </h1>
-      <div
-        style={{
-          position: "relative",
-          top: "35vh",
-          left: "4%",
-          fontFamily: "Poppins",
-          fontSize: "15px",
-          color: "white",
-          width: "40%",
-          lineHeight: "20px",
-        }}
-      >
-        CommuniSync is a student interaction website designed for collaboration
-        and project applications, fostering a sense of community among students.
-        It offers dedicated spaces for project submissions, event calendars, and
-        resource sharing. The platform supports student clubs and organizations,
-        enhancing extracurricular involvement. Students can connect, stay
-        informed, and apply for projects through this innovative platform,
-        bridging the gap between traditional and digital learning experiences
-      </div>
+      </animated.nav>
+      <animated.div style={contentAnimation}>
+        <animated.h1
+          style={{
+            position: "relative",
+            top: "35vh",
+            left: "3%",
+            fontFamily: "Poiret One",
+            fontSize: "80px",
+            color: "white",
+            ...headingAnimation, // Apply the heading animation
+          }}
+        >
+          COMMUNISYNC
+        </animated.h1>
+        <animated.div
+          style={{
+            position: "relative",
+            top: "35vh",
+            left: "4%",
+            fontFamily: "Poppins",
+            fontSize: "15px",
+            color: "white",
+            width: "40%",
+            lineHeight: "20px",
+            ...textAnimation, // Apply the text animation
+          }}
+        >
+          CommuniSync is a student interaction website designed for
+          collaboration and project applications, fostering a sense of community
+          among students. It offers dedicated spaces for project submissions,
+          event calendars, and resource sharing. The platform supports student
+          clubs and organizations, enhancing extracurricular involvement.
+          Students can connect, stay informed, and apply for projects through
+          this innovative platform, bridging the gap between traditional and
+          digital learning experiences
+        </animated.div>
+      </animated.div>
     </div>
   );
 }
