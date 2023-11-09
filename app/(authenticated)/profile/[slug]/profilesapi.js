@@ -30,4 +30,16 @@ async function updateBio(newBio) {
   await user.save();
 }
 
-export { getProfile, updateBio };
+async function updateDetails(phone, linkedin) {
+  await dbConnect();
+
+  const session = await getServerSession();
+  const { email } = session.user;
+  const user = await User.findOne({ email });
+
+  user.phone = phone;
+  user.linkedin = linkedin;
+  await user.save();
+}
+
+export { getProfile, updateBio, updateDetails };
